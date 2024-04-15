@@ -5,11 +5,15 @@ from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 class TblAddresses(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4(), db_column="address_uuid", editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, db_column="address_uuid", editable=False)
     adr_city = models.CharField(max_length=25, db_column="adr_city", verbose_name=_("Город"), blank=True, null=True)
-    adr_street = models.CharField(max_length=50, db_column="adr_street", verbose_name=_("Улица"), blank=True, null=True)
-    adr_district = models.CharField(max_length=50, db_column="adr_district", verbose_name=_("Район"), blank=True, null=True)
+    adr_street = models.CharField(max_length=50, db_column="adr_street", verbose_name=_("Улица"), blank=True,
+                                  null=True)
+    adr_district = models.CharField(max_length=50, db_column="adr_district", verbose_name=_("Район"), blank=True,
+                                    null=True)
     adr_house = models.CharField(max_length=50, db_column="adr_house", verbose_name=_("Дом"), blank=True, null=True)
+    adr_region = models.CharField(max_length=50, db_column="adr_region", verbose_name=_("Регион"), blank=True,
+                                  null=True)
 
     def __str__(self):
         address_string = _('г.%(city)s, ул.%(street)s, д.%(house)s') % {
