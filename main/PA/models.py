@@ -1,9 +1,7 @@
 import uuid
-
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-# Create your models here.
 class TblAddresses(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, db_column="address_uuid", editable=False)
     adr_city = models.CharField(max_length=25, db_column="adr_city", verbose_name=_("Город"), blank=True, null=True)
@@ -29,7 +27,14 @@ class TblAddresses(models.Model):
         verbose_name_plural = _('Адреса')
         ordering = ['adr_city', 'adr_street']
 
+
 class TblCian(models.Model):
+    rent_sale = (
+        ('sale', 'sale'),
+        ('rent', 'rent'),
+        ('all', 'all'),
+    )
+
     tc_id = models.AutoField(primary_key=True, db_column="tc_cian_record_id")
     tc_address = models.ForeignKey(TblAddresses, on_delete=models.DO_NOTHING, db_column="tc_address", blank=True,
                                    null=True)
@@ -39,9 +44,11 @@ class TblCian(models.Model):
     tc_floors = models.FloatField(max_length=25, db_column="tc_floors", verbose_name=_("Этажность"), blank=True,
                                   null=True)
     tc_year_building = models.IntegerField(db_column="tc_year_building", verbose_name=_("Год постройки"),
-                                           blank=True,null=True)
+                                           blank=True, null=True)
     tc_additional_info = models.JSONField(db_column="tc_additional_info", verbose_name=_("Дополнительная информация"),
                                           blank=True, null=True)
+    # tc_rent_sale = models.CharField(max_length=4, db_column="tc_rent_sale", verdose_name=_("Аренда или продожа"),
+    #                                 blank=True, null=True, choices=rent_sale)
 
     class Meta:
         db_table = "tbl_cian"
