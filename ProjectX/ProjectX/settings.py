@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-p246pzbjxaewyy_()uwoxl=%#63=i5m(0^2(y2bv_h$yx)#-=u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG")
 
 ALLOWED_HOSTS = []
 
@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'PA',
 ]
 
@@ -54,7 +53,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'Main.urls'
+ROOT_URLCONF = 'ProjectX.urls'
 
 TEMPLATES = [
     {
@@ -72,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Main.wsgi.application'
+WSGI_APPLICATION = 'ProjectX.wsgi.application'
 
 
 # Database

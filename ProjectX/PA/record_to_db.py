@@ -1,10 +1,14 @@
 from django.conf import settings
 import os
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Main.settings')
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ProjectX.settings')
 settings.configure()
 
+import django
+django.setup()
+
 import json
-from models import TblCian
+from models import TblAddresses
 
 
 
