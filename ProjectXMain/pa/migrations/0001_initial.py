@@ -39,7 +39,7 @@ class Migration(migrations.Migration):
                 ('tc_floors', models.FloatField(blank=True, db_column='tc_floors', max_length=25, null=True, verbose_name='Этажность')),
                 ('tc_year_building', models.IntegerField(blank=True, db_column='tc_year_building', null=True, verbose_name='Год постройки')),
                 ('tc_additional_info', models.JSONField(blank=True, db_column='tc_additional_info', null=True, verbose_name='Дополнительная информация')),
-                ('tc_address', models.ForeignKey(blank=True, db_column='tc_address', null=True, on_delete=django.db.models.deletion.DO_NOTHING, to='PA.tbladdresses')),
+                ('tc_address', models.ForeignKey(blank=True, db_column='tc_address', null=True, on_delete=django.db.models.deletion.DO_NOTHING, to='pa.tbladdresses')),
             ],
             options={
                 'verbose_name': 'Запись Циан',
