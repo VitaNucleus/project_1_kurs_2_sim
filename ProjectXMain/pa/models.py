@@ -47,8 +47,9 @@ class TblCian(models.Model):
                                            blank=True, null=True)
     tc_additional_info = models.JSONField(db_column="tc_additional_info", verbose_name=_("Дополнительная информация"),
                                           blank=True, null=True)
-    # tc_rent_sale = models.CharField(max_length=4, db_column="tc_rent_sale", verdose_name=_("Аренда или продожа"),
-    #                                 blank=True, null=True, choices=rent_sale)
+    tc_rent_sale = models.CharField(max_length=4, db_column="tc_rent_sale", verbose_name=_("Аренда или продожа"),
+                                    blank=True, null=True, choices=rent_sale)
+    tc_cost = models.FloatField(max_length=25, db_column="tc_cost", verbose_name=_("Стоимость"), blank=True, null=True)
 
     class Meta:
         db_table = "tbl_cian"
