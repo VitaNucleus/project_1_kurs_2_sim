@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #222;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-container {
+    width: 300px;
+    padding: 16px;
+    background-color: #333;
+    margin: 0 auto;
+    margin-top: 100px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.profile-container h2 {
+    text-align: center;
+    margin-bottom: 24px;
+    color: #fff;
+}
+
+.profile-info p {
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.profile-actions button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.profile-actions button:hover {
+    opacity: 0.8;
+}
