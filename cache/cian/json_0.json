@@ -2297,6 +2297,10 @@
         "cost": 15000000.0
     },
     "https://perm.cian.ru/sale/commercial/286711916/": {
+        "areas": [
+            46.6,
+            72.1
+        ],
         "floor": 2,
         "address": {
             "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
@@ -2306,7 +2310,10 @@
             "street": "\u0443\u043b. \u0427\u0435\u0440\u043d\u044b\u0448\u0435\u0432\u0441\u043a\u043e\u0433\u043e",
             "house": "28"
         },
-        "cost": 27960004686500.0
+        "costs": [
+            2796000.0,
+            4686500.0
+        ]
     },
     "https://perm.cian.ru/sale/commercial/300555993/": {
         "area": 54.0,

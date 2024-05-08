@@ -3,12 +3,14 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 class TblAddresses(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, db_column="address_uuid", editable=False)
+    adr_id = models.UUIDField(primary_key=True, default=uuid.uuid4, db_column="adr_id", editable=False)
     adr_city = models.CharField(max_length=25, db_column="adr_city", verbose_name=_("Город"), blank=True, null=True)
     adr_street = models.CharField(max_length=50, db_column="adr_street", verbose_name=_("Улица"), blank=True,
                                   null=True)
     adr_district = models.CharField(max_length=50, db_column="adr_district", verbose_name=_("Район"), blank=True,
                                     null=True)
+    adr_sub_district = models.CharField(max_length=50, db_column="adr_sub_district", verbose_name=_("Микрорайон"),
+                                        blank=True, null=True)
     adr_house = models.CharField(max_length=50, db_column="adr_house", verbose_name=_("Дом"), blank=True, null=True)
     adr_region = models.CharField(max_length=50, db_column="adr_region", verbose_name=_("Регион"), blank=True,
                                   null=True)
@@ -29,12 +31,6 @@ class TblAddresses(models.Model):
 
 
 class TblCian(models.Model):
-    rent_sale = (
-        ('sale', 'sale'),
-        ('rent', 'rent'),
-        ('all', 'all'),
-    )
-
     tc_id = models.AutoField(primary_key=True, db_column="tc_cian_record_id")
     tc_address = models.ForeignKey(TblAddresses, on_delete=models.DO_NOTHING, db_column="tc_address", blank=True,
                                    null=True)
@@ -43,12 +39,10 @@ class TblCian(models.Model):
     tc_floor = models.FloatField(max_length=25, db_column="tc_floor", verbose_name=_("Этаж"), blank=True, null=True)
     tc_floors = models.FloatField(max_length=25, db_column="tc_floors", verbose_name=_("Этажность"), blank=True,
                                   null=True)
-    tc_year_building = models.IntegerField(db_column="tc_year_building", verbose_name=_("Год постройки"),
-                                           blank=True, null=True)
     tc_additional_info = models.JSONField(db_column="tc_additional_info", verbose_name=_("Дополнительная информация"),
                                           blank=True, null=True)
     tc_rent_sale = models.CharField(max_length=4, db_column="tc_rent_sale", verbose_name=_("Аренда или продожа"),
-                                    blank=True, null=True, choices=rent_sale)
+                                    blank=True, null=True)
     tc_cost = models.FloatField(max_length=25, db_column="tc_cost", verbose_name=_("Стоимость"), blank=True, null=True)
 
     class Meta:
