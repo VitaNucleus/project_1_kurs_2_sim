@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="ru">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <title>Регистрация</title>
-    <link rel="stylesheet" href="reg.css">
+    <link rel="stylesheet" href="{% static 'css/Reg.css' %}">
 </head>
 <body>
     <div class="registration-container">
         <h2>Регистрация</h2>
         <form action="/register" method="post">
-            ъ
+            <label for="name"><b>Имя</b></label>
             <input type="text" placeholder="Введите ваше имя" name="name" required>
 
             <label for="email"><b>Email</b></label>

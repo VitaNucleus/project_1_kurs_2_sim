@@ -9,6 +9,9 @@ from django.http import HttpResponse
 def enter(request):
     return render(request, "Title.html")
 
+def Reg(request):
+    return render(request, "Reg.html")
+
 def Lk(request):
     return render(request, "Lk.html")
 
