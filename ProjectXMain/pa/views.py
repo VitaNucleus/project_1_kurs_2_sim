@@ -2,10 +2,14 @@ import os
 import json
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.http import HttpResponse
 
 # Create your views here.
 
-def test(request):
+def enter(request):
+    return render(request, "Title.html")
+
+def Lk(request):
     return render(request, "Lk.html")
 
 def json_test(request):
