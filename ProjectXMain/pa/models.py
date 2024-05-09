@@ -3,7 +3,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 class TblAddresses(models.Model):
-    adr_id = models.UUIDField(primary_key=True, default=uuid.uuid4, db_column="adr_id", editable=False)
+    adr_uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, db_column="address_uuid", editable=False)
     adr_city = models.CharField(max_length=25, db_column="adr_city", verbose_name=_("Город"), blank=True, null=True)
     adr_street = models.CharField(max_length=50, db_column="adr_street", verbose_name=_("Улица"), blank=True,
                                   null=True)
