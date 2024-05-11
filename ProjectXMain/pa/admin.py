@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import TblCian, TblAddresses
+from .models import *
 
 # Register your models here.
 
@@ -11,8 +11,15 @@ class TblAddressesAdmin(admin.ModelAdmin):
     list_per_page = 25
 
 
-@admin.register(TblCian)
+@admin.register(TblCianSale)
 class TblCianAdmin(admin.ModelAdmin):
-    list_display = ['tc_url', 'tc_area']
-    search_fields = ['tc_url', 'tc_area']
+    list_display = ['tcs_url', 'tcs_area']
+    search_fields = ['tcs_url', 'tcs_area']
+    list_per_page = 25
+
+
+@admin.register(TblCianRent)
+class TblCianAdmin(admin.ModelAdmin):
+    list_display = ['tcr_url', 'tcr_area']
+    search_fields = ['tcr_url', 'tcr_area']
     list_per_page = 25

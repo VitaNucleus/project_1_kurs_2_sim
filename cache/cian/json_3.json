@@ -1,34 +1,6 @@
 {
-    "https://perm.cian.ru/sale/commercial/286554101/": {
-        "address": {
-            "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
-            "city": "\u041f\u0435\u0440\u043c\u044c",
-            "district": "\u0440-\u043d \u041e\u0440\u0434\u0436\u043e\u043d\u0438\u043a\u0438\u0434\u0437\u0435\u0432\u0441\u043a\u0438\u0439",
-            "street": "\u043c\u043a\u0440. \u0413\u0430\u0439\u0432\u0430",
-            "house": "\u0443\u043b. \u0420\u0435\u043f\u0438\u043d\u0430"
-        },
-        "cost": 9500000.0
-    },
-    "https://perm.cian.ru/sale/commercial/299947960/": {
-        "address": {
-            "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
-            "city": "\u041f\u0435\u0440\u043c\u044c",
-            "district": "\u0440-\u043d \u0421\u0432\u0435\u0440\u0434\u043b\u043e\u0432\u0441\u043a\u0438\u0439",
-            "street": "\u043c\u043a\u0440. \u041a\u0440\u0430\u0441\u043d\u043e\u0432\u0430",
-            "house": "\u0443\u043b. \u0421\u043e\u043b\u0434\u0430\u0442\u043e\u0432\u0430"
-        },
-        "cost": 69000000.0
-    },
-    "https://perm.cian.ru/sale/commercial/237362255/": {
-        "address": {
-            "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
-            "city": "\u041f\u0435\u0440\u043c\u044c",
-            "street": "\u0440-\u043d \u041b\u0435\u043d\u0438\u043d\u0441\u043a\u0438\u0439",
-            "house": "\u041a\u0430\u043c\u0441\u043a\u0430\u044f \u0414\u043e\u043b\u0438\u043d\u0430 \u043c\u0438\u043a\u0440\u043e\u0440\u0430\u0439\u043e\u043d"
-        },
-        "cost": 1990000.0
-    },
     "https://perm.cian.ru/sale/commercial/284137072/": {
+        "area": 1000.0,
         "address": {
             "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
             "city": "\u041f\u0435\u0440\u043c\u044c",
@@ -38,17 +10,18 @@
         },
         "cost": 38000000.0
     },
-    "https://perm.cian.ru/sale/commercial/296625545/": {
+    "https://perm.cian.ru/sale/commercial/237362255/": {
+        "area": 13840.0,
         "address": {
             "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
             "city": "\u041f\u0435\u0440\u043c\u044c",
-            "district": "\u0440-\u043d \u0421\u0432\u0435\u0440\u0434\u043b\u043e\u0432\u0441\u043a\u0438\u0439",
-            "street": "\u043c\u043a\u0440. \u0421\u0432\u0435\u0440\u0434\u043b\u043e\u0432\u0441\u043a\u0438\u0439",
-            "house": "\u0443\u043b. \u0427\u043a\u0430\u043b\u043e\u0432\u0430"
+            "street": "\u0440-\u043d \u041b\u0435\u043d\u0438\u043d\u0441\u043a\u0438\u0439",
+            "house": "\u041a\u0430\u043c\u0441\u043a\u0430\u044f \u0414\u043e\u043b\u0438\u043d\u0430 \u043c\u0438\u043a\u0440\u043e\u0440\u0430\u0439\u043e\u043d"
         },
-        "cost": 90000000.0
+        "cost": 1990000.0
     },
     "https://perm.cian.ru/sale/commercial/276591989/": {
+        "area": 700.0,
         "address": {
             "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
             "city": "\u041f\u0435\u0440\u043c\u044c",
@@ -58,17 +31,43 @@
         },
         "cost": 20000000.0
     },
-    "https://perm.cian.ru/sale/commercial/300764899/": {
+    "https://perm.cian.ru/sale/commercial/296625545/": {
+        "area": 3110.0,
         "address": {
             "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
             "city": "\u041f\u0435\u0440\u043c\u044c",
-            "district": "\u0440-\u043d \u0418\u043d\u0434\u0443\u0441\u0442\u0440\u0438\u0430\u043b\u044c\u043d\u044b\u0439",
-            "street": "\u041d\u043e\u0440\u0438\u043b\u044c\u0441\u043a\u0430\u044f \u0443\u043b.",
-            "house": "6"
+            "district": "\u0440-\u043d \u0421\u0432\u0435\u0440\u0434\u043b\u043e\u0432\u0441\u043a\u0438\u0439",
+            "street": "\u043c\u043a\u0440. \u0421\u0432\u0435\u0440\u0434\u043b\u043e\u0432\u0441\u043a\u0438\u0439",
+            "house": "\u0443\u043b. \u0427\u043a\u0430\u043b\u043e\u0432\u0430"
         },
-        "cost": 170000000.0
+        "cost": 90000000.0
+    },
+    "https://perm.cian.ru/sale/commercial/296328670/": {
+        "area": 400.0,
+        "address": {
+            "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
+            "city": "\u041f\u0435\u0440\u043c\u044c",
+            "district": "\u0440-\u043d \u0414\u0437\u0435\u0440\u0436\u0438\u043d\u0441\u043a\u0438\u0439",
+            "sub_district": "\u043c\u043a\u0440. \u0426\u0435\u043d\u0442\u0440",
+            "street": "\u0443\u043b. \u041e\u043a\u0443\u043b\u043e\u0432\u0430",
+            "house": "74\u0410"
+        },
+        "cost": 2500000.0
+    },
+    "https://perm.cian.ru/sale/commercial/294891295/": {
+        "area": 400.0,
+        "address": {
+            "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
+            "city": "\u041f\u0435\u0440\u043c\u044c",
+            "district": "\u0440-\u043d \u041b\u0435\u043d\u0438\u043d\u0441\u043a\u0438\u0439",
+            "sub_district": "\u043c\u043a\u0440. \u0420\u0430\u0437\u0433\u0443\u043b\u044f\u0439",
+            "street": "\u0415\u043a\u0430\u0442\u0435\u0440\u0438\u043d\u0438\u043d\u0441\u043a\u0430\u044f \u0443\u043b.",
+            "house": "43"
+        },
+        "cost": 12600000.0
     },
     "https://perm.cian.ru/sale/commercial/300871909/": {
+        "area": 1700.0,
         "address": {
             "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
             "city": "\u041f\u0435\u0440\u043c\u044c",
@@ -77,7 +76,19 @@
         },
         "cost": 3500000.0
     },
+    "https://perm.cian.ru/sale/commercial/298787155/": {
+        "area": 4000.0,
+        "address": {
+            "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
+            "city": "\u041f\u0435\u0440\u043c\u044c",
+            "district": "\u0440-\u043d \u041c\u043e\u0442\u043e\u0432\u0438\u043b\u0438\u0445\u0438\u043d\u0441\u043a\u0438\u0439",
+            "street": "\u043c\u043a\u0440. \u0412\u044b\u0448\u043a\u0430-2",
+            "house": "\u0421\u043e\u043b\u0438\u043a\u0430\u043c\u0441\u043a\u0430\u044f \u0443\u043b."
+        },
+        "cost": 16000000.0
+    },
     "https://perm.cian.ru/sale/commercial/284819844/": {
+        "area": 41665.0,
         "address": {
             "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
             "city": "\u041f\u0435\u0440\u043c\u044c",
@@ -88,28 +99,8 @@
         },
         "cost": 460000000.0
     },
-    "https://perm.cian.ru/sale/commercial/298787155/": {
-        "address": {
-            "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
-            "city": "\u041f\u0435\u0440\u043c\u044c",
-            "district": "\u0440-\u043d \u041c\u043e\u0442\u043e\u0432\u0438\u043b\u0438\u0445\u0438\u043d\u0441\u043a\u0438\u0439",
-            "street": "\u043c\u043a\u0440. \u0412\u044b\u0448\u043a\u0430-2",
-            "house": "\u0421\u043e\u043b\u0438\u043a\u0430\u043c\u0441\u043a\u0430\u044f \u0443\u043b."
-        },
-        "cost": 16000000.0
-    },
-    "https://perm.cian.ru/sale/commercial/296328670/": {
-        "address": {
-            "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
-            "city": "\u041f\u0435\u0440\u043c\u044c",
-            "district": "\u0440-\u043d \u0414\u0437\u0435\u0440\u0436\u0438\u043d\u0441\u043a\u0438\u0439",
-            "sub_district": "\u043c\u043a\u0440. \u0426\u0435\u043d\u0442\u0440",
-            "street": "\u0443\u043b. \u041e\u043a\u0443\u043b\u043e\u0432\u0430",
-            "house": "74\u0410"
-        },
-        "cost": 3500000.0
-    },
     "https://perm.cian.ru/sale/commercial/299685959/": {
+        "area": 2100.0,
         "address": {
             "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
             "city": "\u041f\u0435\u0440\u043c\u044c",
@@ -120,6 +111,7 @@
         "cost": 9900000.0
     },
     "https://perm.cian.ru/sale/commercial/295288763/": {
+        "area": 1300.0,
         "address": {
             "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
             "city": "\u041f\u0435\u0440\u043c\u044c",
@@ -130,6 +122,7 @@
         "cost": 11050000.0
     },
     "https://perm.cian.ru/sale/commercial/295303044/": {
+        "area": 15200.0,
         "address": {
             "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
             "city": "\u041f\u0435\u0440\u043c\u044c",
@@ -139,17 +132,19 @@
         },
         "cost": 228000000.0
     },
-    "https://perm.cian.ru/sale/commercial/295288969/": {
+    "https://perm.cian.ru/sale/commercial/299947960/": {
+        "area": 3000.0,
         "address": {
             "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
             "city": "\u041f\u0435\u0440\u043c\u044c",
             "district": "\u0440-\u043d \u0421\u0432\u0435\u0440\u0434\u043b\u043e\u0432\u0441\u043a\u0438\u0439",
-            "street": "\u0443\u043b. \u0413\u0435\u0440\u043e\u0435\u0432 \u0425\u0430\u0441\u0430\u043d\u0430",
-            "house": "105\u0426"
+            "street": "\u043c\u043a\u0440. \u041a\u0440\u0430\u0441\u043d\u043e\u0432\u0430",
+            "house": "\u0443\u043b. \u0421\u043e\u043b\u0434\u0430\u0442\u043e\u0432\u0430"
         },
-        "cost": 23400000.0
+        "cost": 69000000.0
     },
     "https://perm.cian.ru/sale/commercial/300583568/": {
+        "area": 5200.0,
         "address": {
             "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
             "city": "\u041f\u0435\u0440\u043c\u044c",
@@ -159,16 +154,30 @@
         },
         "cost": 41600000.0
     },
-    "https://perm.cian.ru/sale/commercial/286599038/": {
+    "https://perm.cian.ru/sale/commercial/295288969/": {
+        "area": 2600.0,
         "address": {
             "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
             "city": "\u041f\u0435\u0440\u043c\u044c",
-            "street": "\u0440-\u043d \u041c\u043e\u0442\u043e\u0432\u0438\u043b\u0438\u0445\u0438\u043d\u0441\u043a\u0438\u0439",
-            "house": "\u041b\u044f\u0434\u043e\u0432\u0441\u043a\u0430\u044f \u0443\u043b."
+            "district": "\u0440-\u043d \u0421\u0432\u0435\u0440\u0434\u043b\u043e\u0432\u0441\u043a\u0438\u0439",
+            "street": "\u0443\u043b. \u0413\u0435\u0440\u043e\u0435\u0432 \u0425\u0430\u0441\u0430\u043d\u0430",
+            "house": "105\u0426"
         },
-        "cost": 380000.0
+        "cost": 23400000.0
+    },
+    "https://perm.cian.ru/sale/commercial/300764899/": {
+        "area": 1300.0,
+        "address": {
+            "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
+            "city": "\u041f\u0435\u0440\u043c\u044c",
+            "district": "\u0440-\u043d \u0418\u043d\u0434\u0443\u0441\u0442\u0440\u0438\u0430\u043b\u044c\u043d\u044b\u0439",
+            "street": "\u041d\u043e\u0440\u0438\u043b\u044c\u0441\u043a\u0430\u044f \u0443\u043b.",
+            "house": "6"
+        },
+        "cost": 170000000.0
     },
     "https://perm.cian.ru/sale/commercial/293634742/": {
+        "area": 3300.0,
         "address": {
             "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
             "city": "\u041f\u0435\u0440\u043c\u044c",
@@ -177,16 +186,18 @@
         },
         "cost": 15900000.0
     },
-    "https://perm.cian.ru/sale/commercial/292961859/": {
+    "https://perm.cian.ru/sale/commercial/286599038/": {
+        "area": 1700.0,
         "address": {
             "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
             "city": "\u041f\u0435\u0440\u043c\u044c",
             "street": "\u0440-\u043d \u041c\u043e\u0442\u043e\u0432\u0438\u043b\u0438\u0445\u0438\u043d\u0441\u043a\u0438\u0439",
-            "house": "\u0421\u044b\u043b\u0432\u0435\u043d\u0441\u043a\u0438\u0439 \u0442\u0440\u0430\u043a\u0442"
+            "house": "\u041b\u044f\u0434\u043e\u0432\u0441\u043a\u0430\u044f \u0443\u043b."
         },
-        "cost": 15890000.0
+        "cost": 380000.0
     },
     "https://perm.cian.ru/sale/commercial/300542274/": {
+        "area": 3000.0,
         "address": {
             "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
             "city": "\u041f\u0435\u0440\u043c\u044c",
@@ -197,7 +208,29 @@
         },
         "cost": 18000000.0
     },
+    "https://perm.cian.ru/sale/commercial/292961859/": {
+        "area": 830.0,
+        "address": {
+            "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
+            "city": "\u041f\u0435\u0440\u043c\u044c",
+            "street": "\u0440-\u043d \u041c\u043e\u0442\u043e\u0432\u0438\u043b\u0438\u0445\u0438\u043d\u0441\u043a\u0438\u0439",
+            "house": "\u0421\u044b\u043b\u0432\u0435\u043d\u0441\u043a\u0438\u0439 \u0442\u0440\u0430\u043a\u0442"
+        },
+        "cost": 15890000.0
+    },
+    "https://perm.cian.ru/sale/commercial/292192575/": {
+        "area": 8800.0,
+        "address": {
+            "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
+            "city": "\u041f\u0435\u0440\u043c\u044c",
+            "district": "\u0440-\u043d \u041e\u0440\u0434\u0436\u043e\u043d\u0438\u043a\u0438\u0434\u0437\u0435\u0432\u0441\u043a\u0438\u0439",
+            "street": "\u0443\u043b. \u0420\u0435\u043f\u0438\u043d\u0430",
+            "house": "98"
+        },
+        "cost": 28000000.0
+    },
     "https://perm.cian.ru/sale/commercial/299720138/": {
+        "area": 550.0,
         "address": {
             "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
             "city": "\u041f\u0435\u0440\u043c\u044c",
@@ -208,17 +241,8 @@
         },
         "cost": 9990000.0
     },
-    "https://perm.cian.ru/sale/commercial/292192575/": {
-        "address": {
-            "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
-            "city": "\u041f\u0435\u0440\u043c\u044c",
-            "district": "\u0440-\u043d \u041e\u0440\u0434\u0436\u043e\u043d\u0438\u043a\u0438\u0434\u0437\u0435\u0432\u0441\u043a\u0438\u0439",
-            "street": "\u0443\u043b. \u0420\u0435\u043f\u0438\u043d\u0430",
-            "house": "98"
-        },
-        "cost": 28000000.0
-    },
     "https://perm.cian.ru/sale/commercial/300749755/": {
+        "area": 13019.999999999998,
         "address": {
             "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
             "city": "\u041f\u0435\u0440\u043c\u044c",
@@ -229,6 +253,7 @@
         "cost": 170000000.0
     },
     "https://perm.cian.ru/sale/commercial/292498066/": {
+        "area": 2800.0,
         "address": {
             "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
             "city": "\u041f\u0435\u0440\u043c\u044c",
@@ -239,6 +264,7 @@
         "cost": 9800000.0
     },
     "https://perm.cian.ru/sale/commercial/292192573/": {
+        "area": 6300.0,
         "address": {
             "region": "\u041f\u0435\u0440\u043c\u0441\u043a\u0438\u0439 \u043a\u0440\u0430\u0439",
             "city": "\u041f\u0435\u0440\u043c\u044c",

@@ -30,23 +30,40 @@ class TblAddresses(models.Model):
         ordering = ['adr_city', 'adr_street']
 
 
-class TblCian(models.Model):
-    tc_id = models.AutoField(primary_key=True, db_column="tc_cian_record_id")
-    tc_address = models.ForeignKey(TblAddresses, on_delete=models.DO_NOTHING, db_column="tc_address", blank=True,
+class TblCianSale(models.Model):
+    tcs_id = models.AutoField(primary_key=True, db_column="tcs_id")
+    tcs_address = models.ForeignKey(TblAddresses, on_delete=models.DO_NOTHING, db_column="tcs_address", blank=True,
                                    null=True)
-    tc_url = models.URLField(db_column="tc_url", verbose_name=_("URL"), blank=True, null=True)
-    tc_area = models.FloatField(max_length=25, db_column="tc_area", verbose_name=_("Площадь"), blank=True, null=True)
-    tc_floor = models.FloatField(max_length=25, db_column="tc_floor", verbose_name=_("Этаж"), blank=True, null=True)
-    tc_floors = models.FloatField(max_length=25, db_column="tc_floors", verbose_name=_("Этажность"), blank=True,
+    tcs_url = models.URLField(db_column="tcs_url", verbose_name=_("URL"), blank=True, null=True)
+    tcs_area = models.FloatField(max_length=25, db_column="tcs_area", verbose_name=_("Площадь"), blank=True, null=True)
+    tcs_floor = models.FloatField(max_length=25, db_column="tcs_floor", verbose_name=_("Этаж"), blank=True, null=True)
+    tcs_floors = models.FloatField(max_length=25, db_column="tcs_floors", verbose_name=_("Этажность"), blank=True,
                                   null=True)
-    tc_additional_info = models.JSONField(db_column="tc_additional_info", verbose_name=_("Дополнительная информация"),
+    tcs_additional_info = models.JSONField(db_column="tcs_additional_info", verbose_name=_("Дополнительная информация"),
                                           blank=True, null=True)
-    tc_rent_sale = models.CharField(max_length=4, db_column="tc_rent_sale", verbose_name=_("Аренда или продожа"),
-                                    blank=True, null=True)
-    tc_cost = models.FloatField(max_length=25, db_column="tc_cost", verbose_name=_("Стоимость"), blank=True, null=True)
+    tcs_cost = models.FloatField(max_length=25, db_column="tcs_cost", verbose_name=_("Стоимость"), blank=True, null=True)
 
     class Meta:
-        db_table = "tbl_cian"
-        verbose_name = _('Запись Циан')
-        verbose_name_plural = _('Записи Циана')
-        ordering = ['tc_id']
+        db_table = "tbl_cian_sale"
+        verbose_name = _('Запись циана продажа')
+        verbose_name_plural = _('Записи циана продажа')
+        ordering = ['tcs_id']
+
+class TblCianRent(models.Model):
+    tcr_id = models.AutoField(primary_key=True, db_column="tcr_id")
+    tcr_address = models.ForeignKey(TblAddresses, on_delete=models.DO_NOTHING, db_column="tc_address", blank=True,
+                                   null=True)
+    tcr_url = models.URLField(db_column="tc_url", verbose_name=_("URL"), blank=True, null=True)
+    tcr_area = models.FloatField(max_length=25, db_column="tc_area", verbose_name=_("Площадь"), blank=True, null=True)
+    tcr_floor = models.FloatField(max_length=25, db_column="tc_floor", verbose_name=_("Этаж"), blank=True, null=True)
+    tcr_floors = models.FloatField(max_length=25, db_column="tc_floors", verbose_name=_("Этажность"), blank=True,
+                                  null=True)
+    tcr_additional_info = models.JSONField(db_column="tc_additional_info", verbose_name=_("Дополнительная информация"),
+                                          blank=True, null=True)
+    tcr_cost = models.FloatField(max_length=25, db_column="tc_cost", verbose_name=_("Стоимость"), blank=True, null=True)
+
+    class Meta:
+        db_table = "tbl_cian_rent"
+        verbose_name = _('Запись циан аренда')
+        verbose_name_plural = _('Записи циана аренда')
+        ordering = ['tcr_id']
