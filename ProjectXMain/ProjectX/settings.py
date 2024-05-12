@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     #apps
     'pa',
+    'users',
 ]
 
 LOGGING = {
@@ -69,7 +70,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'pa.urls'
+ROOT_URLCONF = 'ProjectX.urls'
 
 TEMPLATES = [
     {

@@ -7,13 +7,13 @@ from django.http import HttpResponse
 # Create your views here.
 
 def enter(request):
-    return render(request, "Title.html")
+    return render(request, "login.html")
 
 def Reg(request):
-    return render(request, "Reg.html")
+    return render(request, "registration.html")
 
 def Lk(request):
-    return render(request, "Lk.html")
+    return render(request, "personal_area.html")
 
 def json_test(request):
     dir = os.path.abspath(__file__).replace("ProjectXMain/pa/views.py", "cache/cian/", 1)

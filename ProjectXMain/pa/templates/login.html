@@ -10,7 +10,8 @@
 <h1>Real estate analyzer</h1>
     <div class="login-container">
         <h2>Вход на сайт</h2>
-        <form action="/login" method="post">
+        <form method="POST">
+            {% csrf_token %}
             <label for="username"><b>Логин</b></label>
             <input type="text" placeholder="Введите логин" name="username" required>
 

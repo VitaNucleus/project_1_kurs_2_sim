@@ -6,7 +6,6 @@ from .models import *
 
 
 def set_cians(record, url, adr, i):
-    print(record)
     if "floor" in list(record):
         floor = record['floor']
     else:
