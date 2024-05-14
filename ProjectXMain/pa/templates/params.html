@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>choice</title>
+    <link rel="stylesheet" href="{% static 'css/params.css' %}">
+</head>
+<body>
+<h1>Real estate analyzer</h1>
+    <div class="choice-container">
+        <h2>Выберите параметры:</h2>
+        <form method="GET">
+            <label for="area"><b>Площадь</b></label>
+            <input type="text" placeholder="Введите площадь" name="area" required>
+
+            <label for="price"><b>Цена</b></label>
+            <input type="text" placeholder="Введите цену" name="price" required> <!--или нужно поменять type="text" на -->
+
+            <button type="submit">Найти</button>
+        </form>
+    </div>
+</body>
+</html>
