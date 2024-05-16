@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-p246pzbjxaewyy_()uwoxl=%#63=i5m(0^2(y2bv_h$yx)#-=u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG")
 
-ALLOWED_HOSTS = ["127.0.0.1", os.getenv("PG_HOST")]
+ALLOWED_HOSTS = ["127.0.0.1", os.getenv("PG_HOST"), "realestateanalyzer.hopto.org:8000"]
 
 
 # Application definition
