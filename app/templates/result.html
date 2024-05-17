@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>River Segments Analysis Result</title>
+</head>
+<body>
+
+<h1>Average Price of Selected River Segments</h1>
+
+{% if average_price %}
+    <p>The average price of the selected river segments is: ${{ average_price }}</p>
+{% else %}
+    <p>No river segments match the specified criteria.</p>
+{% endif %}
+
+</body>
+</html>
