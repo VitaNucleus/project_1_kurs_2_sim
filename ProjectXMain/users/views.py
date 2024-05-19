@@ -13,7 +13,8 @@ def login_users(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect('/home')
+            context = {"user": user}
+            return HttpResponseRedirect('/home', headers=context)
     return render(request, 'login.html')
 
 

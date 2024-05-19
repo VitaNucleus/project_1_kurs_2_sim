@@ -1,7 +1,7 @@
 import os
 import json
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
 from django.http import HttpResponse
 
 # Create your views here.
@@ -13,7 +13,14 @@ def Reg(request):
     return render(request, "registration.html")
 
 def Lk(request):
-    return render(request, "personal_area.html")
+    context = {}
+    user = request.user
+    if user.is_authenticated:
+        context["user_name"] = user.first_name
+        context["email"] = user.email
+        return render(request, "personal_area.html", context=context)
+    else:
+        return HttpResponseRedirect('')
 
 def json_test(request):
     dir = os.path.abspath(__file__).replace("ProjectXMain/pa/views.py", "cache/cian/", 1)
