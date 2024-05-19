@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
+{% load static %}
 <head>
-    <title>River Segments Analysis Result</title>
+    <title>Analysis Result</title>
 </head>
+<link rel="stylesheet" href="{% static 'css/params.css' %}">
 <body>
 
-<h1>Average Price of Selected River Segments</h1>
+<h2>Средняя цена в выбранных сегментах недвижимости</h2>
 
-{% if average_price %}
-    <p>The average price of the selected river segments is: ${{ average_price }}</p>
-{% else %}
-    <p>No river segments match the specified criteria.</p>
-{% endif %}
+    {% if average_price %}
+        <p>Средняя цена в выбранных сегментах недвижимости составляет: ${{ average_price }}</p>
+    {% else %}
+        <p>Ни один из сегментов недвижимости не соответствует указанным критериям.</p>
+    {% endif %}
 
 </body>
 </html>
