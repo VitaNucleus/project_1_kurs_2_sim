@@ -20,7 +20,7 @@ def Lk(request):
         context["email"] = user.email
         return render(request, "personal_area.html", context=context)
     else:
-        return HttpResponseRedirect('')
+        return HttpResponseRedirect('/')
 
 def json_test(request):
     dir = os.path.abspath(__file__).replace("ProjectXMain/pa/views.py", "cache/cian/", 1)

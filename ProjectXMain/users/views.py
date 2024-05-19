@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.shortcuts import render
@@ -19,7 +19,8 @@ def login_users(request):
 
 
 def logout_users(request):
-    return HttpResponse('logout')
+    logout(request)
+    return HttpResponseRedirect('/')
 
 
 def registration(request):
