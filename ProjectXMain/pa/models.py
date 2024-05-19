@@ -51,16 +51,16 @@ class TblCianSale(models.Model):
 
 class TblCianRent(models.Model):
     tcr_id = models.AutoField(primary_key=True, db_column="tcr_id")
-    tcr_address = models.ForeignKey(TblAddresses, on_delete=models.DO_NOTHING, db_column="tc_address", blank=True,
+    tcr_address = models.ForeignKey(TblAddresses, on_delete=models.DO_NOTHING, db_column="tcr_address", blank=True,
                                    null=True)
-    tcr_url = models.URLField(db_column="tc_url", verbose_name=_("URL"), blank=True, null=True)
-    tcr_area = models.FloatField(max_length=25, db_column="tc_area", verbose_name=_("Площадь"), blank=True, null=True)
-    tcr_floor = models.FloatField(max_length=25, db_column="tc_floor", verbose_name=_("Этаж"), blank=True, null=True)
-    tcr_floors = models.FloatField(max_length=25, db_column="tc_floors", verbose_name=_("Этажность"), blank=True,
+    tcr_url = models.URLField(db_column="tcr_url", verbose_name=_("URL"), blank=True, null=True)
+    tcr_area = models.FloatField(max_length=25, db_column="tcr_area", verbose_name=_("Площадь"), blank=True, null=True)
+    tcr_floor = models.FloatField(max_length=25, db_column="tcr_floor", verbose_name=_("Этаж"), blank=True, null=True)
+    tcr_floors = models.FloatField(max_length=25, db_column="tcr_floors", verbose_name=_("Этажность"), blank=True,
                                   null=True)
-    tcr_additional_info = models.JSONField(db_column="tc_additional_info", verbose_name=_("Дополнительная информация"),
+    tcr_additional_info = models.JSONField(db_column="tcr_additional_info", verbose_name=_("Дополнительная информация"),
                                           blank=True, null=True)
-    tcr_cost = models.FloatField(max_length=25, db_column="tc_cost", verbose_name=_("Стоимость"), blank=True, null=True)
+    tcr_cost = models.FloatField(max_length=25, db_column="tcr_cost", verbose_name=_("Стоимость"), blank=True, null=True)
 
     class Meta:
         db_table = "tbl_cian_rent"

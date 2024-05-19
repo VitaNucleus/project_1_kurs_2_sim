@@ -1,8 +1,11 @@
 import os
 import json
+
+from django.db.models import Avg
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponseRedirect
 from django.http import HttpResponse
+from .models import *
 
 # Create your views here.
 
@@ -29,21 +32,112 @@ def json_test(request):
         return JsonResponse(object)
 
 
-def river_segment(request):
+def recomendation_form(request):
     if request.method == 'POST':
-        min_area = float(request.POST.get('min_area', 50))
-        max_area = float(request.POST.get('max_area', 100))
-        min_price = float(request.POST.get('min_price', 0))
-        max_price = float(request.POST.get('max_price', 100000))
-        rent = request.POST.get('rent', False)
+        context = {}
+        context['values_chart'] = {}
+        min_area = float(request.POST.get('min_area'))
+        max_area = float(request.POST.get('max_area'))
+        min_price = float(request.POST.get('min_price'))
+        max_price = float(request.POST.get('max_price'))
+        step_area = float(request.POST.get("area_step"))
+        rent = request.POST.get('rent')
 
-        # selected_rivers = River.objects.filter(area__range=(min_area, max_area), price__range=(min_price, max_price))
+        if not step_area:
+            step_area = max_area - min_area / 10
 
-        # if rent:
-        #     selected_rivers = selected_rivers.filter(rent=True)
-        #
-        # average_price = selected_rivers.aggregate(avg_price=Avg('price'))['avg_price']
+        while (min_area < max_area):
+            temp_area = min_area + step_area
+            if temp_area > max_area:
+                temp_area = max_area
 
-        return render(request, 'result.html',) #{'average_price': average_price})
+            if rent:
+                queryset = (TblCianRent.objects.filter(tcr_area__range=(min_area, temp_area),
+                                                      tcr_cost__range=(min_price, max_price),
+                                                      ).aggregate(avg_area=Avg(f'tcr_area'),
+                                                                 avg_price=Avg(f'tcr_cost')))
+            else:
+                queryset = (TblCianSale.objects.filter(tcs_area__range=(min_area, temp_area),
+                                                      tcs_cost__range=(min_price, max_price),
+                                                      ).aggregate(avg_area=Avg('tcs_area'),
+                                                                 avg_price=Avg('tcs_cost')))
+            min_area += step_area
+            context['values_chart'][f'{round(queryset["avg_area"], 2)}'] = round(queryset['avg_price'], 2)
 
-    return render(request, 'river_segment.html')
+        return render(request, 'result.html', context=context)
+
+    return render(request, 'recomendation_form.html')
+
+
+def set_params_delete_unnecessary(i, obj):
+    result = {}
+    if i == 0:
+        result["cost"] = obj.tcr_cost
+        result["area"] = obj.tcr_area
+        result["floor"] = obj.tcr_floor
+        result["address"] = obj.tcr_address
+        result["floors"] = obj.tcr_floors
+        result["additional_info"] = obj.tcr_additional_info
+    else:
+        result["cost"] = obj.tcs_cost
+        result["area"] = obj.tcs_area
+        result["floor"] = obj.tcs_floor
+        result["address"] = obj.tcs_address
+        result["floors"] = obj.tcs_floors
+        result["additional_info"] = obj.tcs_additional_info
+    return result
+
+
+def delete_unnecessary(requset):
+    for i in range(2):
+        if i == 0:
+            queryset = TblCianRent.objects.filter()
+        else:
+            queryset = TblCianSale.objects.filter()
+        for record in queryset:
+            if i == 0:
+                url = record.tcr_url
+                for_delete = TblCianRent.objects.filter(tcr_url=url)
+            else:
+                url = record.tcs_url
+                for_delete = TblCianSale.objects.filter(tcs_url=url)
+            for j in range(len(for_delete)):
+                result = set_params_delete_unnecessary(i, for_delete[j])
+                for k in range(j + 1, len(for_delete)):
+                    next_result = set_params_delete_unnecessary(i, for_delete[k])
+                    if ((result["cost"] == next_result["cost"]) and (result["area"] == next_result["area"]) and
+                            (result["floor"] == next_result["floor"]) and (result["address"] == next_result["address"])
+                            and (result["floors"] == next_result["floors"]) and
+                            (result["additional_info"] == next_result["additional_info"])):
+                        for_delete[k].delete()
+    return HttpResponse("Ok")
+
+
+def split_sale_and_rent(requset):
+    for i in range(2):
+        if i == 0:
+            queryset = TblCianRent.objects.filter()
+        else:
+            queryset = TblCianSale.objects.filter()
+        for record in queryset:
+            if i == 0:
+                url = record.tcr_url
+                if "sale" in url.split('/'):
+                    Cian, exist = TblCianSale.objects.get_or_create(tcs_url=url, tcs_cost=record.tcr_cost,
+                                                                    tcs_area=record.tcr_area,
+                                                                    tcs_address=record.tcr_address,
+                                                                    tcs_floor=record.tcr_floor,
+                                                                    tcs_floors=record.tcr_floors,
+                                                                    tcs_additional_info=record.tcr_additional_info)
+                    record.delete()
+            else:
+                url = record.tcs_url
+                if "rent" in url.split('/'):
+                    Cian, exist = TblCianRent.objects.get_or_create(tcr_url=url, tcr_cost=record.tcs_cost,
+                                                                    tcr_area=record.tcs_area,
+                                                                    tcr_address=record.tcs_address,
+                                                                    tcr_floor=record.tcs_floor,
+                                                                    tcr_floors=record.tcs_floors,
+                                                                    tcr_additional_info=record.tcs_additional_info)
+                    record.delete()
+    return HttpResponse("Ok")
