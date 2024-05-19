@@ -7,10 +7,12 @@
 <link rel="stylesheet" href="{% static 'css/params.css' %}">
 <body>
 
-<h2>Средняя цена в выбранных сегментах недвижимости</h2>
+    <h2>Средняя цена в выбранных сегментах недвижимости</h2>
 
-    {% if average_price %}
-        <p>Средняя цена в выбранных сегментах недвижимости составляет: ${{ average_price }}</p>
+    {% if values_chart %}
+        {% for key, value in values_chart.items %}
+            <p>{{ key }}, {{ value }}</p>
+        {% endfor %}
     {% else %}
         <p>Ни один из сегментов недвижимости не соответствует указанным критериям.</p>
     {% endif %}
