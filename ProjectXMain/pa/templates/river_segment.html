@@ -1,26 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
+{% load static %}
 <head>
-    <title>River Segments Analysis</title>
+    <meta charset="UTF-8">
+    <title>choice</title>
+    <link rel="stylesheet" href="{% static 'css/river_segment.css' %}">
 </head>
 <body>
 
-<h1>Choose River Segments</h1>
+<h1>Real estate analyzer</h1>
+    <div class="choice-container">
+        <form method="post">
+            {% csrf_token %}
+            <label for="min_area"><b>Минимальная площадь:</b></label>
+            <input type="number" name="min_area" id="min_area"><br>
 
-<form method="post">
-    {% csrf_token %}
-    <label for="min_area">Minimum Area:</label>
-    <input type="number" name="min_area" id="min_area" value="50">
-    <label for="max_area">Maximum Area:</label>
-    <input type="number" name="max_area" id="max_area" value="100"><br>
-    <label for="min_price">Minimum Price:</label>
-    <input type="number" name="min_price" id="min_price" value="0">
-    <label for="max_price">Maximum Price:</label>
-    <input type="number" name="max_price" id="max_price" value="100000"><br>
-    <label for="rent">Is it for Rent?</label>
-    <input type="checkbox" name="rent" id="rent"><br>
-    <button type="submit">Submit</button>
-</form>
+            <label for="max_area"><b>Максимальная площадь:</b</label>
+            <input type="number" name="max_area" id="max_area"><br>
 
+            <label for="min_price"><b>Минимальная цена:</b></label>
+            <input type="number" name="min_price" id="min_price"><br>
+
+            <label for="max_price"><b>Максимальная цена:</b></label>
+            <input type="number" name="max_price" id="max_price"><br>
+
+            <!--<label for="price_step"><b>Шаг цены:</b></label>
+            <input type="number" name="price_step" id="price_step"><br>-->
+
+            <label for="area_step"><b>Шаг площади:</b></label>
+            <input type="number" name="area_step" id="area_step"><br>
+
+            <label for="rent">Площадь нужна для аренды?</label>
+            <input type="checkbox" name="rent" id="rent"><br>
+            <button type="submit">Подтвердить</button>
+        </form>
+    </div>
 </body>
 </html>
