@@ -8,13 +8,6 @@ from django.http import HttpResponse
 from .models import *
 
 # Create your views here.
-
-def enter(request):
-    return render(request, "login.html")
-
-def Reg(request):
-    return render(request, "registration.html")
-
 def Lk(request):
     context = {}
     user = request.user
@@ -141,3 +134,11 @@ def split_sale_and_rent(requset):
                                                                     tcr_additional_info=record.tcs_additional_info)
                     record.delete()
     return HttpResponse("Ok")
+
+
+def get_user_object(request):
+    if request.method == "GET":
+        return render(request, "get_object.html")
+    elif request.method == "POST":
+        cost = float(request.POST.get("cost"))
+        return HttpResponseRedirect("/home/")

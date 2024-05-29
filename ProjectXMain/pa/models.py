@@ -67,3 +67,49 @@ class TblCianRent(models.Model):
         verbose_name = _('Запись циан аренда')
         verbose_name_plural = _('Записи циана аренда')
         ordering = ['tcr_id']
+
+
+class TblUsersObjectsRent(models.Model):
+    tuor_id = models.AutoField(primary_key=True, db_column="tuor_id")
+    tuor_cian_rent = models.ForeignKey(TblCianRent, on_delete=models.DO_NOTHING, db_column="tuor_cian_rent", blank=True,
+                                      null=True)
+    tuor_address = models.ForeignKey(TblAddresses, on_delete=models.DO_NOTHING, db_column="tuor_address", blank=True,
+                                    null=True)
+    tuor_url = models.URLField(db_column="tuor_url", verbose_name=_("URL"), blank=True, null=True)
+    tuor_area = models.FloatField(max_length=25, db_column="tuor_area", verbose_name=_("Площадь"), blank=True, null=True)
+    tuor_floor = models.FloatField(max_length=25, db_column="tuor_floor", verbose_name=_("Этаж"), blank=True, null=True)
+    tuor_floors = models.FloatField(max_length=25, db_column="tuor_floors", verbose_name=_("Этажность"), blank=True,
+                                   null=True)
+    tuor_additional_info = models.JSONField(db_column="tuor_additional_info", verbose_name=_("Дополнительная информация"),
+                                           blank=True, null=True)
+    tuor_cost = models.FloatField(max_length=25, db_column="tuor_cost", verbose_name=_("Стоимость"), blank=True,
+                                 null=True)
+
+    class Meta:
+        db_table = "tbl_users_objects_rent"
+        verbose_name = _('Запись пользовательского объекта аренда')
+        verbose_name_plural = _('Записи пользовательских объектов аренда')
+        ordering = ['tuor_id']
+
+
+class TblUsersObjectsRent(models.Model):
+    tuos_id = models.AutoField(primary_key=True, db_column="tuos_id")
+    tuos_cian_sale = models.ForeignKey(TblCianSale, on_delete=models.DO_NOTHING, db_column="tuos_cian_sale", blank=True,
+                                      null=True)
+    tuos_address = models.ForeignKey(TblAddresses, on_delete=models.DO_NOTHING, db_column="tuos_address", blank=True,
+                                    null=True)
+    tuos_url = models.URLField(db_column="tuos_url", verbose_name=_("URL"), blank=True, null=True)
+    tuos_area = models.FloatField(max_length=25, db_column="tuos_area", verbose_name=_("Площадь"), blank=True, null=True)
+    tuos_floor = models.FloatField(max_length=25, db_column="tuos_floor", verbose_name=_("Этаж"), blank=True, null=True)
+    tuos_floors = models.FloatField(max_length=25, db_column="tuos_floors", verbose_name=_("Этажность"), blank=True,
+                                   null=True)
+    tuos_additional_info = models.JSONField(db_column="tuos_additional_info", verbose_name=_("Дополнительная информация"),
+                                           blank=True, null=True)
+    tuos_cost = models.FloatField(max_length=25, db_column="tuos_cost", verbose_name=_("Стоимость"), blank=True,
+                                 null=True)
+
+    class Meta:
+        db_table = "tbl_users_objects_sale"
+        verbose_name = _('Запись пользовательского объекта продажа')
+        verbose_name_plural = _('Записи пользовательских объектов продажа')
+        ordering = ['tuos_id']
