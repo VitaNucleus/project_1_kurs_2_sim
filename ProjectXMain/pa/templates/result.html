@@ -8,13 +8,21 @@
 <body>
 
     <h2>Средняя цена в выбранных сегментах недвижимости</h2>
-
-    {% if values_chart %}
-        {% for key, value in values_chart.items %}
-            <p>{{ key }}, {{ value }}</p>
+    {% count_rent %}
+    {% count_sale %}
+    {% if values_chart_rent %}
+        {% for key, value in values_chart_rent.items %}
+            <p>{{ key }}| {{ value }}</p>
         {% endfor %}
     {% else %}
-        <p>Ни один из сегментов недвижимости не соответствует указанным критериям.</p>
+        <p>Ни один из сегментов недвижимости по аренде не соответствует указанным критериям.</p>
+    {% endif %}
+    {% if values_chart_sale %}
+        {% for key, value in values_chart_sale.items %}
+            <p>{{ key }}| {{ value }}</p>
+        {% endfor %}
+    {% else %}
+        <p>Ни один из сегментов недвижимости по продаже не соответствует указанным критериям.</p>
     {% endif %}
 
 </body>

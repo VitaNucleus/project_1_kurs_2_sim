@@ -1,7 +1,7 @@
 import os
 import json
 
-from django.db.models import Avg
+from django.db.models import Avg, Count
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponseRedirect
 from django.http import HttpResponse
@@ -28,14 +28,19 @@ def json_test(request):
 def recomendation_form(request):
     if request.method == 'POST':
         context = {}
-        context['values_chart'] = {}
+        context['values_chart_rent'] = {}
+        context['values_chart_sale'] = {}
         min_area = float(request.POST.get('min_area'))
         max_area = float(request.POST.get('max_area'))
         min_price = float(request.POST.get('min_price'))
         max_price = float(request.POST.get('max_price'))
         step_area = float(request.POST.get("area_step"))
-        rent = request.POST.get('rent')
-
+        context["count_rent"] = TblCianRent.objects.filter(tcr_area__range=(min_area, max_area),
+                                                           tcr_cost__range=(min_price, max_price),
+                                                           ).aggregate(Count("tcr_id"))['tcr_id__count']
+        context["count_sale"] = TblCianSale.objects.filter(tcs_area__range=(min_area, max_area),
+                                                           tcs_cost__range=(min_price, max_price),
+                                                           ).aggregate(Count("tcs_id"))['tcs_id__count']
         if not step_area:
             step_area = max_area - min_area / 10
 
@@ -43,19 +48,20 @@ def recomendation_form(request):
             temp_area = min_area + step_area
             if temp_area > max_area:
                 temp_area = max_area
-
-            if rent:
-                queryset = (TblCianRent.objects.filter(tcr_area__range=(min_area, temp_area),
+            queryset_rent = TblCianRent.objects.filter(tcr_area__range=(min_area, temp_area),
                                                       tcr_cost__range=(min_price, max_price),
-                                                      ).aggregate(avg_area=Avg(f'tcr_area'),
-                                                                 avg_price=Avg(f'tcr_cost')))
-            else:
-                queryset = (TblCianSale.objects.filter(tcs_area__range=(min_area, temp_area),
+                                                      ).aggregate(avg_area=Avg('tcr_area'),
+                                                                 avg_price=Avg('tcr_cost'))
+            queryset_sale = TblCianSale.objects.filter(tcs_area__range=(min_area, temp_area),
                                                       tcs_cost__range=(min_price, max_price),
                                                       ).aggregate(avg_area=Avg('tcs_area'),
-                                                                 avg_price=Avg('tcs_cost')))
+                                                                 avg_price=Avg('tcs_cost'))
+
+            if queryset_rent['avg_price']:
+                context['values_chart_rent'][f'{min_area}-{temp_area}'] = round(queryset_rent['avg_price'], 2)
+            if queryset_sale['avg_price']:
+                context['values_chart_sale'][f'{min_area}-{temp_area}'] = round(queryset_sale['avg_price'], 2)
             min_area += step_area
-            context['values_chart'][f'{round(queryset["avg_area"], 2)}'] = round(queryset['avg_price'], 2)
 
         return render(request, 'result.html', context=context)
 
@@ -141,4 +147,17 @@ def get_user_object(request):
         return render(request, "get_object.html")
     elif request.method == "POST":
         cost = float(request.POST.get("cost"))
+        area = float(request.POST.get("area"))
+        address = {"city": request.POST.get("city"),
+                   "district": request.POST.get("district"),
+                   "street": request.POST.get("street"),
+                   "home": request.POST.get('building'),}
+        if request.POST.get('floor'):
+            floor = request.POST.get('floor')
+        else:
+            floor = None
+        if request.POST.get('floors'):
+            floors = request.POST.get('floors')
+        else:
+            floors = None
         return HttpResponseRedirect("/home/")
