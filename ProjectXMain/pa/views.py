@@ -200,7 +200,7 @@ def get_user_object(request):
     if request.method == "GET":
         return render(request, "get_object.html")
     elif request.method == "POST":
-        cost = float(request.POST.get("cost"))
+        cost = float(request.POST.get("price"))
         area = float(request.POST.get("area"))
         address = {"city": request.POST.get("city"),
                    "district": request.POST.get("district"),

@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG")
 
-ALLOWED_HOSTS = ["127.0.0.1", f'{os.getenv("PG_HOST")}:8000', "realestateanalyzer.hopto.org"]
+ALLOWED_HOSTS = ["127.0.0.1", os.getenv("PG_HOST"), "realestateanalyzer.hopto.org"]
 
 
 # Application definition
