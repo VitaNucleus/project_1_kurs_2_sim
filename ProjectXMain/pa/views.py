@@ -6,6 +6,7 @@ from django.shortcuts import render
 from django.http import JsonResponse, HttpResponseRedirect
 from django.http import HttpResponse
 from .models import *
+from datetime import datetime
 
 # Create your views here.
 def Lk(request):
@@ -30,6 +31,7 @@ def recomendation_form(request):
         context = {}
         context['values_chart_rent'] = {}
         context['values_chart_sale'] = {}
+        context['update_time'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         min_area = float(request.POST.get('min_area'))
         max_area = float(request.POST.get('max_area'))
         min_price = float(request.POST.get('min_price'))
