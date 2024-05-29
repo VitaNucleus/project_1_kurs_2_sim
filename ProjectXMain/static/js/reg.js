@@ -6,6 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Добавление обработчика события click для кнопки регистрации
     registrationButton.addEventListener('click', function() {
         // Перенаправление на страницу регистрации
-        window.location.href = 'http://127.0.0.1:8000/registration/';
+        window.location.href = 'registration/';
     });
 });

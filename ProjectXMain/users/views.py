@@ -36,4 +36,5 @@ def registration(request):
             if user is not None:
                 login(request, user)
                 return HttpResponseRedirect('/home')
+
     return render(request, 'registration.html')
