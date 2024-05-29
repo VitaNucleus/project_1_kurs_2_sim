@@ -34,3 +34,11 @@ th, td {
 th {
     background-color: #555
 }
+
+.update-time {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
