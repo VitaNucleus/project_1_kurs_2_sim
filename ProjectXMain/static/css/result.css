@@ -9,14 +9,47 @@ body {
     padding: 0;
 }
 
-h1 {
-    color: brown;
-}
-
-h2 {
-    color: #fff;
+h2, h3 {
+    margin: 0;
+    padding: 20px;
 }
 
 h3 {
-    color:
+    font-size: 18px;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 20px;
+    width: 45%;
+    float: left;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-size: 16px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+p {
+    margin: 20px;
+}
+
+/* Clear floats */
+::after {
+    content: "";
+    clear: both;
+    display: table;
 }
