@@ -1,7 +1,7 @@
 import os
 import json
 
-from django.db.models import Avg, Count
+from django.db.models import Avg, Count, Min, Max
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponseRedirect
 from django.http import HttpResponse
@@ -31,43 +31,95 @@ def recomendation_form(request):
         context = {}
         context['values_chart_rent'] = {}
         context['values_chart_sale'] = {}
-        context['update_time'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        context['update_time'] = datetime.now().strftime('%Y-%m-%d 5:00:00')
+
         min_area = float(request.POST.get('min_area'))
         max_area = float(request.POST.get('max_area'))
-        min_price = float(request.POST.get('min_price'))
-        max_price = float(request.POST.get('max_price'))
-        step_area = float(request.POST.get("area_step"))
+
+        if request.POST.get('min_price'):
+            min_price = float(request.POST.get('min_price'))
+        else:
+            min_rent = TblCianRent.objects.aggregate(Min('tcr_cost'))['tcr_cost__min']
+            min_sale = TblCianSale.objects.aggregate(Min('tcs_cost'))['tcs_cost__min']
+            min_price = min(min_rent, min_sale)
+
+        if request.POST.get('max_price'):
+            max_price = float(request.POST.get('max_price'))
+        else:
+            max_rent = TblCianRent.objects.aggregate(Max('tcr_cost'))['tcr_cost__max']
+            max_sale = TblCianSale.objects.aggregate(Max('tcs_cost'))['tcs_cost__max']
+            max_price = max(max_rent, max_sale)
+
+        if request.POST.get("area_step"):
+            step_area = float(request.POST.get("area_step"))
+        else:
+            step_area = (max_area - min_area) / 10
+
         context["count_rent"] = TblCianRent.objects.filter(tcr_area__range=(min_area, max_area),
                                                            tcr_cost__range=(min_price, max_price),
                                                            ).aggregate(Count("tcr_id"))['tcr_id__count']
         context["count_sale"] = TblCianSale.objects.filter(tcs_area__range=(min_area, max_area),
                                                            tcs_cost__range=(min_price, max_price),
                                                            ).aggregate(Count("tcs_id"))['tcs_id__count']
-        if not step_area:
-            step_area = max_area - min_area / 10
+
+        district = request.POST.get('district')
 
         while (min_area < max_area):
             temp_area = min_area + step_area
             if temp_area > max_area:
                 temp_area = max_area
-            queryset_rent = TblCianRent.objects.filter(tcr_area__range=(min_area, temp_area),
-                                                      tcr_cost__range=(min_price, max_price),
-                                                      ).aggregate(avg_area=Avg('tcr_area'),
-                                                                 avg_price=Avg('tcr_cost'))
-            queryset_sale = TblCianSale.objects.filter(tcs_area__range=(min_area, temp_area),
-                                                      tcs_cost__range=(min_price, max_price),
-                                                      ).aggregate(avg_area=Avg('tcs_area'),
-                                                                 avg_price=Avg('tcs_cost'))
 
-            if queryset_rent['avg_price']:
-                context['values_chart_rent'][f'{min_area}-{temp_area}'] = round(queryset_rent['avg_price'], 2)
-            if queryset_sale['avg_price']:
-                context['values_chart_sale'][f'{min_area}-{temp_area}'] = round(queryset_sale['avg_price'], 2)
+            if district == "Все районы":
+                queryset_rent = TblCianRent.objects.filter(tcr_area__range=(min_area, temp_area),
+                                                           tcr_cost__range=(min_price, max_price),
+                                                           ).aggregate(avg_area=Avg('tcr_area'),
+                                                                       avg_price=Avg('tcr_cost'),
+                                                                       count=Count('tcr_id'))
+                queryset_sale = TblCianSale.objects.filter(tcs_area__range=(min_area, temp_area),
+                                                           tcs_cost__range=(min_price, max_price),
+                                                           ).aggregate(avg_area=Avg('tcs_area'),
+                                                                       avg_price=Avg('tcs_cost'),
+                                                                       count=Count('tcs_id'))
+            else:
+                queryset_rent = TblCianRent.objects.filter(tcr_area__range=(min_area, temp_area),
+                                                           tcr_cost__range=(min_price, max_price),
+                                                           tcr_address__adr_district=district,
+                                                           ).aggregate(avg_area=Avg('tcr_area'),
+                                                                       avg_price=Avg('tcr_cost'),
+                                                                       count=Count('tcr_id'))
+                queryset_sale = TblCianSale.objects.filter(tcs_area__range=(min_area, temp_area),
+                                                           tcs_cost__range=(min_price, max_price),
+                                                           tcs_address__adr_district=district,
+                                                           ).aggregate(avg_area=Avg('tcs_area'),
+                                                                       avg_price=Avg('tcs_cost'),
+                                                                       count=Count('tcs_id'))
+
+            if queryset_rent['avg_price'] and queryset_rent['avg_area']:
+                cost_m = queryset_rent['avg_price'] / queryset_rent['avg_area']
+                count = queryset_rent['count']
+                context['values_chart_rent'][f'{min_area}-{temp_area}'] = [round(cost_m, 2), count]
+            else:
+                context['values_chart_rent'][f'{min_area}-{temp_area}'] = ["Нет данных", 0]
+
+            if queryset_sale['avg_price'] and queryset_sale['avg_area']:
+                cost_m = queryset_sale['avg_price'] / queryset_sale['avg_area']
+                count = queryset_sale['count']
+                context['values_chart_sale'][f'{min_area}-{temp_area}'] = [round(cost_m, 2), count]
+            else:
+                context['values_chart_sale'][f'{min_area}-{temp_area}'] = ["Нет данных", 0]
+
             min_area += step_area
 
         return render(request, 'result.html', context=context)
 
-    return render(request, 'recomendation_form.html')
+    context = {}
+    context['districts'] = []
+    districts = TblAddresses.objects.order_by().values_list("adr_district").distinct()
+    for item in districts:
+        if item[0]:
+            context['districts'].append(item[0])
+
+    return render(request, 'recomendation_form.html', context=context)
 
 
 def set_params_delete_unnecessary(i, obj):

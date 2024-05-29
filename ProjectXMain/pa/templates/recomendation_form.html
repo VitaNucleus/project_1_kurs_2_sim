@@ -24,11 +24,15 @@ c
             <label for="max_price"><b>Максимальная цена:</b></label>
             <input type="number" name="max_price" id="max_price"><br>
 
-            <!--<label for="price_step"><b>Шаг цены:</b></label>
-            <input type="number" name="price_step" id="price_step"><br>-->
-
             <label for="area_step"><b>Шаг площади:</b></label>
             <input type="number" name="area_step" id="area_step"><br>
+
+            <select name="district">
+                <option selected>Все районы</option>
+                {% for item in districts %}
+                    <option>{{ item }}</option>
+                {% endfor %}
+            </select>
 
             <button type="submit">Подтвердить</button>
         </form>
